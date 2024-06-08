@@ -1,0 +1,10 @@
+x64/
+Weather_Bot_2_0/x64/
+Weather_Bot_2_0/api_tgid.json
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
