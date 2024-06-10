@@ -48,14 +48,14 @@ int main() {
         std::cout<<"id: " << message->chat->id << std::endl;
     });
     try {
-        printf("Bot username: %s\n", bot.getApi().getMe()->username.c_str());
+        std::cout << "Bot username: \n" << bot.getApi().getMe()->username.c_str();
         TgBot::TgLongPoll longPoll(bot);
         while (true) {
-            printf("Long poll started\n");
+            std::cout << "Long poll started\n";
             longPoll.start();
         }
     } catch (TgBot::TgException& e) {
-        printf("error: %s\n", e.what());
+        std::cout << "error: \n" << e.what();
     }
     return 0;
 }
