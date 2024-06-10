@@ -34,3 +34,31 @@ This class is created to allow the OpenWeatherMapApi class to interact correctly
 #### CLass Bot
 This is the heart and brain of the bot library [tgbot-cpp](https://github.com/reo7sp/tgbot-cpp) was used only in this class. All actions of a class are specified in its constructor. The trick of this class is that it contains not one bot, but two, one is a Weather bot, the second is an alert bot (sends you any messages received by the weather bot). The class contains the bot's response to the commands /start, /help and any message. When a non-command message is sent to the bot, it passes that message to the Weather class and receives a search response. If such a city exists in the weather service, the bot will send weather time buttons and, depending on their click, display the weather for that city at that time. If such a city does not exist, the bot says that the city does not exist. All these actions are written in 3 classes and it is the class Bot that brings it all together.
 ##Launch
+First you need to rename the _api_tgid.json file to api_tgid.json, insert the correct tokens and chat id with the notification bot there (its receipt is described below). In addition, you need to install the boost library and the clang++/g++ compiler. The tgbot-cpp library is included with the repository as a submodule; there is no need to install it separately.
+###Getting the id of the notification bot
+You need to run this program after inserting the alert bot token:
+
+```cpp
+#include <iostream>
+#include <tgbot/tgbot.h>
+
+int main() {
+    TgBot::Bot bot("PLACE YOUR TOKEN HERE");
+    bot.getEvents().onAnyMessage([&bot](TgBot::Message::Ptr message) {
+        std::cout<<"id: " << message->chat->id << std::endl;
+    });
+    try {
+        printf("Bot username: %s\n", bot.getApi().getMe()->username.c_str());
+        TgBot::TgLongPoll longPoll(bot);
+        while (true) {
+            printf("Long poll started\n");
+            longPoll.start();
+        }
+    } catch (TgBot::TgException& e) {
+        printf("error: %s\n", e.what());
+    }
+    return 0;
+}
+```
+
+After launching, write a message to the notification bot and the id of this chat will be displayed in the console (this should be inserted into api_tgid.json)
