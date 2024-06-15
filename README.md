@@ -1,4 +1,5 @@
 # Weather telegram bot on cpp
+Attention! This program was not written by a professional or even a junior, but rather by a beginner as much as possible.
 ## The weather bot is written in C++ using the library  [tgbot-cpp](https://github.com/reo7sp/tgbot-cpp). [Weather service](https://openweathermap.org)
 This bot communicates with you only in English, but can accept requests in any language. As a response, the bot provides a text message, which, depending on what data was obtained using the OpenWeatherMap API, contains weather data in a given city. Data from OpenWeatherMap is not always complete, so sometimes some parameters may be missing from the output. The bot takes the name of the city and if this city exists, it gives a choice of weather time: now, 1 day, 2 days, 3 days, 4 days, 5 days. Depending on the choice, the bot sends the weather: 
 If “now”:
