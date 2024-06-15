@@ -10,26 +10,13 @@ set(SOURCES
     Weather_Bot_2_0/weather_api.cpp
     Weather_Bot_2_0/bot.cpp
     Weather_Bot_2_0/weather.cpp
-    Weather_Bot_2_0/weather_text.cpp)
+    Weather_Bot_2_0/weather_text.cpp )
 set(HEADERS
     Weather_Bot_2_0/weather_api.h
     Weather_Bot_2_0/bot.h
     Weather_Bot_2_0/weather.h
-    Weather_Bot_2_0/weather_text.h)
+    Weather_Bot_2_0/weather_text.h )
 
 add_executable(weather-tg-bot ${SOURCES} ${HEADERS})
-
-set(TG_BOT_DIR ${CMAKE_CURRENT_LIST_DIR}/tgbot)
-
-set(TgbotCpp_ROOT_DIR ${TG_BOT_DIR}/tgbot-cpp)
-set(TgbotCpp_INCLUDE_DIR ${TgbotCpp_ROOT_DIR}/include)
-add_subdirectory(${TgbotCpp_ROOT_DIR})
-
-find_package(Boost COMPONENTS COMPONENTS system REQUIRED)
-
-target_include_directories(${PROJECT_NAME} PRIVATE ${TgbotCpp_INCLUDE_DIR})
-target_link_libraries(${PROJECT_NAME} PRIVATE TgBot)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE Boost::system)
 
 file(COPY Weather_Bot_2_0/api_tgid.json DESTINATION ${PROJECT_BINARY_DIR})
